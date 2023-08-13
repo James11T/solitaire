@@ -1,7 +1,13 @@
 import { CardNotation, RANKS, Rank, Suit } from "../types";
 
-const getRankValue = (card: CardNotation) => {
+const getRank = (card: CardNotation): Rank => {
   const rank = card.charAt(1) as Rank;
+
+  return rank;
+};
+
+const getRankValue = (card: CardNotation) => {
+  const rank = getRank(card);
 
   return RANKS.indexOf(rank);
 };
@@ -31,4 +37,4 @@ const canStackInTableau = (card1: CardNotation, card2: CardNotation) => {
   return card2Rank === card1Rank - 1;
 };
 
-export { getRankValue, isInSuit, canStackInTableau };
+export { getRank, getRankValue, isInSuit, canStackInTableau };

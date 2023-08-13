@@ -1,7 +1,12 @@
 import React from "react";
 import { CardNotation, GameCard, NOTATIONS, Suit, Location } from "../types";
 import shuffle from "../utils/array";
-import { canStackInTableau, getRankValue, isInSuit } from "../utils/card";
+import {
+  canStackInTableau,
+  getRank,
+  getRankValue,
+  isInSuit,
+} from "../utils/card";
 
 const DEFAULT_FOUNDATIONS = {
   C: [],
@@ -146,6 +151,9 @@ const useSolitaire = () => {
 
       if (!canStackInTableau(lastCard.notation, card))
         return console.log("Cant stack");
+    } else {
+      if (getRank(card) !== "K")
+        return console.log("Only king on empty tableau");
     }
 
     if (from.type === "RESERVE") {
